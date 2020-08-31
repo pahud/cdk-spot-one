@@ -21,7 +21,7 @@ test('create the HTTP API', () => {
   });
   // fleet to expire after 6 hours
   fleet.expireAfter(Duration.hours(6));
-  fleet.defaultSG.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
+  fleet.defaultSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
   expect(stack).toHaveResource('AWS::EC2::SpotFleet');
   expect(stack).toHaveResource('AWS::EC2::SecurityGroup', {
     SecurityGroupIngress: [
