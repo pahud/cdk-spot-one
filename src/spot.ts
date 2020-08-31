@@ -206,7 +206,7 @@ export class SpotFleet extends Resource {
   /**
    * @default - open SSH 22 port Any IP .
    */
-  public readonly defaultSG: ec2.ISecurityGroup; 
+  public readonly defaultSecurityGroup: ec2.ISecurityGroup; 
 
   constructor(scope: Construct, id: string, props: SpotFleetProps = {}) {
     super(scope, id, props)
@@ -237,11 +237,11 @@ export class SpotFleet extends Resource {
       roles: [this.instanceRole.roleName],
     })
 
-    this.defaultSG = new ec2.SecurityGroup(this, 'SpotFleetSg', {
+    this.defaultSecurityGroup = new ec2.SecurityGroup(this, 'SpotFleetSg', {
       vpc: this.vpc,
     })
 
-    this.defaultSG.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
+    this.defaultSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
 
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
 
@@ -284,7 +284,7 @@ export class SpotFleet extends Resource {
             instanceInterruptionBehavior: props.instanceInterruptionBehavior ?? InstanceInterruptionBehavior.TERMINATE,
           },
         },
-        securityGroupIds: this.defaultSG.connections.securityGroups.map(m => m.securityGroupId),
+        securityGroupIds: this.defaultSecurityGroup.connections.securityGroups.map(m => m.securityGroupId),
         iamInstanceProfile: {
           arn: instanceProfile.attrArn,
         },
