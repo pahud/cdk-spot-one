@@ -204,7 +204,7 @@ export class SpotFleet extends Resource {
    */
   private validUntil?: string;
   /**
-   * @default - The default security group of the instance, which only allows TCP 22 SSH ingress rule.
+   * The default security group of the instance, which only allows TCP 22 SSH ingress rule.
    */
   public readonly defaultSecurityGroup: ec2.ISecurityGroup; 
 
