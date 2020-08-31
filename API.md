@@ -115,7 +115,7 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
 Name | Type | Description 
 -----|------|-------------
 **defaultInstanceType** | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | <span></span>
-**defaultSG** | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | <span></span>
+**defaultSecurityGroup** | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | <span></span>
 **instanceId** | <code>string</code> | the first instance id in this fleet.
 **instanceRole** | <code>[IRole](#aws-cdk-aws-iam-irole)</code> | <span></span>
 **instanceType** | <code>string</code> | instance type of the first instance in this fleet.
