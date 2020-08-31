@@ -203,6 +203,10 @@ export class SpotFleet extends Resource {
    * The time when the the fleet allocation will expire
    */
   private validUntil?: string;
+  /**
+   * @default - open SSH 22 port Any IP .
+   */
+  public readonly defaultSG: ec2.ISecurityGroup; 
 
   constructor(scope: Construct, id: string, props: SpotFleetProps = {}) {
     super(scope, id, props)
@@ -213,7 +217,7 @@ export class SpotFleet extends Resource {
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
     this.validUntil = props.validUntil 
     this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1})
-
+    
     // isntance role
     this.instanceRole = props.instanceRole || new iam.Role(this, 'InstanceRole', {
       roleName: PhysicalName.GENERATE_IF_NEEDED,
@@ -233,11 +237,11 @@ export class SpotFleet extends Resource {
       roles: [this.instanceRole.roleName],
     })
 
-    const sg = new ec2.SecurityGroup(this, 'SpotFleetSg', {
+    this.defaultSG = new ec2.SecurityGroup(this, 'SpotFleetSg', {
       vpc: this.vpc,
     })
 
-    sg.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
+    this.defaultSG.connections.allowFromAnyIpv4(ec2.Port.tcp(22))
 
     this.defaultInstanceType = props.defaultInstanceType ?? new ec2.InstanceType(DEFAULT_INSTANCE_TYPE)
 
@@ -280,7 +284,7 @@ export class SpotFleet extends Resource {
             instanceInterruptionBehavior: props.instanceInterruptionBehavior ?? InstanceInterruptionBehavior.TERMINATE,
           },
         },
-        securityGroupIds: sg.connections.securityGroups.map(m => m.securityGroupId),
+        securityGroupIds: this.defaultSG.connections.securityGroups.map(m => m.securityGroupId),
         iamInstanceProfile: {
           arn: instanceProfile.attrArn,
         },

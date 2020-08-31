@@ -18,11 +18,27 @@ test('create the HTTP API', () => {
       subnetType: ec2.SubnetType.PUBLIC,
     },
     terminateInstancesWithExpiration: true,
-  })
+  });
   // fleet to expire after 6 hours
-  fleet.expireAfter(Duration.hours(6))
+  fleet.expireAfter(Duration.hours(6));
+  fleet.defaultSG.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
   expect(stack).toHaveResource('AWS::EC2::SpotFleet');
+  expect(stack).toHaveResource('AWS::EC2::SecurityGroup', {
+    SecurityGroupIngress: [
+      {
+        CidrIp: '0.0.0.0/0',
+        Description: 'from 0.0.0.0/0:22',
+        FromPort: 22,
+        IpProtocol: 'tcp',
+        ToPort: 22,
+      },
+      {
+        CidrIp: '0.0.0.0/0',
+        Description: 'from 0.0.0.0/0:80',
+        FromPort: 80,
+        IpProtocol: 'tcp',
+        ToPort: 80,
+      },
+    ],
+  });
 });
-
-
-
