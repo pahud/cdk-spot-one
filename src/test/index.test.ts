@@ -90,7 +90,7 @@ describe('Spot Fleet tests', () => {
 
     new SpotFleet(stack, 'SpotFleet', {
       targetCapacity: 1,
-      blockDuration: BlockDuration.INFINITE,
+      blockDuration: BlockDuration.NONE,
       defaultInstanceType: new ec2.InstanceType('t3.large'),
       vpcSubnet: {
         subnetType: ec2.SubnetType.PUBLIC,

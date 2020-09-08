@@ -26,7 +26,7 @@ export enum BlockDuration {
   FOUR_HOURS = 240,
   FIVE_HOURS = 300,
   SIX_HOURS = 360,
-  INFINITE = -1,
+  NONE = 0,
 }
 
 /**
@@ -289,7 +289,7 @@ export class SpotFleet extends Resource {
         instanceMarketOptions: {
           marketType: 'spot',
           spotOptions: {
-            blockDurationMinutes: (props.blockDuration == BlockDuration.INFINITE) ? undefined : (props.blockDuration ?? BlockDuration.ONE_HOUR),
+            blockDurationMinutes: (props.blockDuration == BlockDuration.NONE) ? undefined : (props.blockDuration ?? BlockDuration.ONE_HOUR),
             instanceInterruptionBehavior: props.instanceInterruptionBehavior ?? InstanceInterruptionBehavior.TERMINATE,
           },
         },
