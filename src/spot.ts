@@ -163,6 +163,12 @@ export interface BaseSpotFleetProps extends ResourceProps {
    */
   readonly keyName?: string;
 
+  /**
+   * Additional commands for user data
+   * 
+   * @default - no additional user data
+   */
+  readonly additionalUserData?: string[];
 }
 
 export interface SpotFleetProps extends BaseSpotFleetProps {
@@ -260,6 +266,8 @@ export class SpotFleet extends Resource {
       'usermod -aG docker ssm-user',
       'service docker start',
     );
+    if (props.additionalUserData)
+      userData.addCommands(...props.additionalUserData);
     const lt = new ec2.CfnLaunchTemplate(this, 'LaunchTemplate', {
       launchTemplateData: {
         imageId,
