@@ -48,6 +48,16 @@ new CfnOutput(stack, 'SpotFleet2InstanceId', { value: fleet2.instanceId })
 
 ```
 
+# Create spot instances without duration block
+
+```ts
+const fleet = new SpotFleet(stack, 'SpotFleet', {
+  blockDuration: BlockDuration.NONE,
+})
+```
+
+NOTE: This kind of spot instance will be interrupted by AWS. However the fleet is using type [maintain](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet.html#spot-fleet-allocation-strategy), the fleet can be refulfilled.
+
 # ARM64 and Graviton 2 support
 
 `cdk-spot-one` selects the latest Amazon Linux 2 AMI for your `ARM64` instances. Simply select the instance types with the `defaultInstanceType` property and the `SpotFleet` will auto configure correct AMI for the instance.
@@ -56,7 +66,6 @@ new CfnOutput(stack, 'SpotFleet2InstanceId', { value: fleet2.instanceId })
 ```ts
 defaultInstanceType: new InstanceType('c6g.large')
 ```
-
 
 # SSH connect
 
