@@ -297,6 +297,7 @@ Name | Description
 **FOUR_HOURS** |
 **FIVE_HOURS** |
 **SIX_HOURS** |
+**INFINITE** |
 
 
 ## enum InstanceInterruptionBehavior  <a id="cdk-spot-one-instanceinterruptionbehavior"></a>
