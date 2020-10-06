@@ -225,20 +225,10 @@ export class SpotFleet extends Resource {
     this.validUntil = props.validUntil;
     this.vpc = props.vpc ?? new ec2.Vpc(this, 'VPC', { maxAzs: 3, natGateways: 1 });
 
-    // isntance role
-    this.instanceRole = props.instanceRole || new iam.Role(this, 'InstanceRole', {
-      roleName: PhysicalName.GENERATE_IF_NEEDED,
-      assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
+    this.instanceRole = props.instanceRole || this.createInstanceRole();
+    this.instanceRole.addManagedPolicy({
+      managedPolicyArn: 'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
     });
-
-    this.instanceRole.addToPolicy(new iam.PolicyStatement({
-      actions: [
-        'ssmmessages:*',
-        'ssm:UpdateInstanceInformation',
-        'ec2messages:*',
-      ],
-      resources: ['*'],
-    }));
 
     const instanceProfile = new iam.CfnInstanceProfile(this, 'InstanceProfile', {
       roles: [this.instanceRole.roleName],
@@ -395,6 +385,13 @@ export class SpotFleet extends Resource {
     const date = new Date();
     date.setSeconds(date.getSeconds() + duration.toSeconds());
     this.validUntil = date.toISOString();
+  }
+
+  private createInstanceRole(): iam.Role {
+    return new iam.Role(this, 'InstanceRole', {
+      roleName: PhysicalName.GENERATE_IF_NEEDED,
+      assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
+    });
   }
 }
 

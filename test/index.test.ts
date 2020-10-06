@@ -1,15 +1,20 @@
 import * as ec2 from '@aws-cdk/aws-ec2';
+import * as iam from '@aws-cdk/aws-iam';
 import { App, Stack, Duration } from '@aws-cdk/core';
 import { SpotFleet, InstanceInterruptionBehavior } from '../src';
 import '@aws-cdk/assert/jest';
 import { BlockDuration } from '../src/spot';
 
 describe('Spot Fleet tests', () => {
+  let mockApp: App;
+  let stack: Stack;
+
+  beforeEach(() => {
+    mockApp = new App();
+    stack = new Stack(mockApp, 'testing-stack');
+  });
 
   test('create the HTTP API', () => {
-    const mockApp = new App();
-    const stack = new Stack(mockApp, 'testing-stack');
-
     const fleet = new SpotFleet(stack, 'SpotFleet', {
       targetCapacity: 1,
       blockDuration: BlockDuration.SIX_HOURS,
@@ -56,10 +61,38 @@ describe('Spot Fleet tests', () => {
     });
   });
 
-  test('support additional user data', () => {
-    const mockApp = new App();
-    const stack = new Stack(mockApp, 'testing-stack');
+  test('feet with custom instance role', () => {
+    const anotherStack = new Stack(mockApp, 'another-stack');
 
+    new SpotFleet(stack, 'SpotFleet', {
+      instanceRole: new iam.Role(anotherStack, 'Custom Role', {
+        assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
+      }),
+    });
+
+    expect(stack).not.toHaveResourceLike('AWS::IAM::Role', {
+      ManagedPolicyArns: [
+        'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
+      ],
+    });
+    expect(anotherStack).toHaveResourceLike('AWS::IAM::Role', {
+      ManagedPolicyArns: [
+        'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
+      ],
+    });
+  });
+
+  test('feet without custom instance role comes with default role', () => {
+    new SpotFleet(stack, 'SpotFleet', {});
+
+    expect(stack).toHaveResourceLike('AWS::IAM::Role', {
+      ManagedPolicyArns: [
+        'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
+      ],
+    });
+  });
+
+  test('support additional user data', () => {
     new SpotFleet(stack, 'SpotFleet', {
       targetCapacity: 1,
       blockDuration: BlockDuration.SIX_HOURS,
@@ -85,9 +118,6 @@ describe('Spot Fleet tests', () => {
   });
 
   test('long time spot fleet', () => {
-    const mockApp = new App();
-    const stack = new Stack(mockApp, 'testing-stack');
-
     new SpotFleet(stack, 'SpotFleet', {
       targetCapacity: 1,
       blockDuration: BlockDuration.NONE,

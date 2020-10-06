@@ -324,31 +324,6 @@ Object {
       },
       "Type": "AWS::IAM::InstanceProfile",
     },
-    "SpotFleet2InstanceRoleDefaultPolicyD7AF32AB": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "ssmmessages:*",
-                "ssm:UpdateInstanceInformation",
-                "ec2messages:*",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleet2InstanceRoleDefaultPolicyD7AF32AB",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleet2InstanceRoleF3AF5752",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
     "SpotFleet2InstanceRoleF3AF5752": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
@@ -373,6 +348,9 @@ Object {
           ],
           "Version": "2012-10-17",
         },
+        "ManagedPolicyArns": Array [
+          "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+        ],
       },
       "Type": "AWS::IAM::Role",
     },
@@ -1313,33 +1291,11 @@ service docker start",
           ],
           "Version": "2012-10-17",
         },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetInstanceRoleDefaultPolicy145E5E7C": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "ssmmessages:*",
-                "ssm:UpdateInstanceInformation",
-                "ec2messages:*",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetInstanceRoleDefaultPolicy145E5E7C",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetInstanceRole9BD9823D",
-          },
+        "ManagedPolicyArns": Array [
+          "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
         ],
       },
-      "Type": "AWS::IAM::Policy",
+      "Type": "AWS::IAM::Role",
     },
     "SpotFleetIsComplete24BA81A1": Object {
       "DependsOn": Array [
