@@ -93,7 +93,7 @@ new SpotFleet(scope: Construct, id: string, props?: SpotFleetProps)
   * **physicalName** (<code>string</code>)  The value passed in by users to the physical name prop of the resource. __*Default*__: The physical name will be allocated by CloudFormation at deployment time
   * **region** (<code>string</code>)  The AWS region this resource belongs to. __*Default*__: the resource is in the same region as the stack it belongs to
   * **additionalUserData** (<code>Array<string></code>)  Additional commands for user data. __*Default*__: no additional user data
-  * **blockDeviceMappings** (<code>Array<[BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code>)  blockDeviceMappings for config instance. __*Default*__: from ami config.
+  * **blockDeviceMappings** (<code>Array<[CfnLaunchTemplate.BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code>)  blockDeviceMappings for config instance. __*Default*__: from ami config.
   * **blockDuration** (<code>[BlockDuration](#cdk-spot-one-blockduration)</code>)  reservce the spot instance as spot block with defined duration. __*Default*__: BlockDuration.ONE_HOUR
   * **customAmiId** (<code>string</code>)  custom AMI ID. __*Default*__: The latest Amaozn Linux 2 AMI ID
   * **defaultInstanceType** (<code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code>)  default EC2 instance type. __*Default*__: t3.large
@@ -203,7 +203,7 @@ Name | Type | Description
 -----|------|-------------
 **account**? | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
 **additionalUserData**? | <code>Array<string></code> | Additional commands for user data.<br/>__*Default*__: no additional user data
-**blockDeviceMappings**? | <code>Array<[BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code> | blockDeviceMappings for config instance.<br/>__*Default*__: from ami config.
+**blockDeviceMappings**? | <code>Array<[CfnLaunchTemplate.BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code> | blockDeviceMappings for config instance.<br/>__*Default*__: from ami config.
 **blockDuration**? | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
 **customAmiId**? | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
 **defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
@@ -271,7 +271,7 @@ Name | Type | Description
 -----|------|-------------
 **account**? | <code>string</code> | The AWS account ID this resource belongs to.<br/>__*Default*__: the resource is in the same account as the stack it belongs to
 **additionalUserData**? | <code>Array<string></code> | Additional commands for user data.<br/>__*Default*__: no additional user data
-**blockDeviceMappings**? | <code>Array<[BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code> | blockDeviceMappings for config instance.<br/>__*Default*__: from ami config.
+**blockDeviceMappings**? | <code>Array<[CfnLaunchTemplate.BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code> | blockDeviceMappings for config instance.<br/>__*Default*__: from ami config.
 **blockDuration**? | <code>[BlockDuration](#cdk-spot-one-blockduration)</code> | reservce the spot instance as spot block with defined duration.<br/>__*Default*__: BlockDuration.ONE_HOUR
 **customAmiId**? | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
 **defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
