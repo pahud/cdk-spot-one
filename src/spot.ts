@@ -333,7 +333,7 @@ export class SpotFleet extends Resource {
         iamFleetRole: spotFleetRole.roleArn,
         targetCapacity: props.targetCapacity ?? 1,
         validFrom: props.validFrom,
-        validUntil: Lazy.stringValue({ produce: () => this.validUntil }),
+        validUntil: Lazy.string({ produce: () => this.validUntil }),
         terminateInstancesWithExpiration: props.terminateInstancesWithExpiration ?? true,
       },
     });
