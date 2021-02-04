@@ -179,6 +179,7 @@ Object {
               "Arn",
             ],
           },
+          "InstanceInterruptionBehavior": "terminate",
           "LaunchTemplateConfigs": Array [
             Object {
               "LaunchTemplateSpecification": Object {
