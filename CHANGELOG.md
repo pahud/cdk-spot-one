@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.139](https://github.com/pahud/cdk-spot-one/compare/v0.6.138...v0.6.139) (2021-02-04)
+
+
+### Features
+
+* support instanceInterruptionBehavior property ([2a51016](https://github.com/pahud/cdk-spot-one/commit/2a51016070b808cd408c72fe558db9f82975b709))
+* support instanceInterruptionBehavior property ([#187](https://github.com/pahud/cdk-spot-one/issues/187)) ([ad036ad](https://github.com/pahud/cdk-spot-one/commit/ad036ad82851e0689317a96a7753af6dcd3f9041))
+
+
+### Bug Fixes
+
+* instanceInterruptionBehavior not honored in SpotFleet ([ba3d908](https://github.com/pahud/cdk-spot-one/commit/ba3d90888b3b23e1402497cba274a7e526d1bb46))
+* lockfile ([a60fea6](https://github.com/pahud/cdk-spot-one/commit/a60fea673be94e5ec367912695db05cae3f3a63c))
+
 ### [0.6.138](https://github.com/pahud/cdk-spot-one/compare/v0.6.137...v0.6.138) (2021-02-03)
 
 ### [0.6.137](https://github.com/pahud/cdk-spot-one/compare/v0.0.1...v0.6.137) (2021-02-02)
