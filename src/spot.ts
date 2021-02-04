@@ -221,6 +221,12 @@ export class SpotFleet extends Resource {
    */
   readonly spotFleetRequestId: string;
   /**
+   * The behavior when a Spot Instance is interrupted
+   * 
+   * @default terminate
+   */
+  readonly instanceInterruptionBehavior?: InstanceInterruptionBehavior;
+  /**
    * The time when the the fleet allocation will expire
    */
   private validUntil?: string;
@@ -335,6 +341,7 @@ export class SpotFleet extends Resource {
         validFrom: props.validFrom,
         validUntil: Lazy.string({ produce: () => this.validUntil }),
         terminateInstancesWithExpiration: props.terminateInstancesWithExpiration ?? true,
+        instanceInterruptionBehavior: props.instanceInterruptionBehavior,
       },
     });
     new CfnOutput(stack, 'SpotFleetId', { value: cfnSpotFleet.ref });
