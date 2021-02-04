@@ -126,6 +126,7 @@ Name | Type | Description
 **spotFleetId** | <code>string</code> | <span></span>
 **spotFleetRequestId** | <code>string</code> | SpotFleetRequestId for this spot fleet.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
+**instanceInterruptionBehavior**? | <code>[InstanceInterruptionBehavior](#cdk-spot-one-instanceinterruptionbehavior)</code> | The behavior when a Spot Instance is interrupted.<br/>__*Default*__: terminate
 **targetCapacity**? | <code>number</code> | __*Optional*__
 
 ### Methods

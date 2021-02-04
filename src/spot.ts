@@ -222,7 +222,7 @@ export class SpotFleet extends Resource {
   readonly spotFleetRequestId: string;
   /**
    * The behavior when a Spot Instance is interrupted
-   * 
+   *
    * @default terminate
    */
   readonly instanceInterruptionBehavior?: InstanceInterruptionBehavior;
