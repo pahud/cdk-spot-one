@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.141](https://github.com/pahud/cdk-spot-one/compare/v0.6.140...v0.6.141) (2021-02-05)
+
 ### [0.6.140](https://github.com/pahud/cdk-spot-one/compare/v0.6.139...v0.6.140) (2021-02-04)
 
 ### [0.6.139](https://github.com/pahud/cdk-spot-one/compare/v0.6.138...v0.6.139) (2021-02-04)
