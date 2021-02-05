@@ -347,9 +347,9 @@
     source-map "^0.5.0"
 
 "@babel/generator@^7.12.13":
-  version "7.12.13"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.12.13.tgz#5f6ebe6c85db99886db2d7b044409196f872a503"
-  integrity sha512-9qQ8Fgo8HaSvHEt6A5+BATP7XktD/AdAnObUeTRz5/e2y3kbrxZgz32qUJJsdmwUvBJzF4AeV21nGTNwv05Mpw==
+  version "7.12.15"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.12.15.tgz#4617b5d0b25cc572474cc1aafee1edeaf9b5368f"
+  integrity sha512-6F2xHxBiFXWNSGb7vyCUTBF8RCLY66rS0zEPcP8t/nQyXjha5EuK4z7H5o7fWG8B4M7y6mqVWq1J+1PuwRhecQ==
   dependencies:
     "@babel/types" "^7.12.13"
     jsesc "^2.5.1"
@@ -460,9 +460,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.1.0", "@babel/parser@^7.12.13":
-  version "7.12.14"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.12.14.tgz#4adb7c5eef1d437ef965ad1569cd826db8c11dc9"
-  integrity sha512-xcfxDq3OrBnDsA/Z8eK5/2iPcLD8qbOaSSfOw4RA6jp4i7e6dEQ7+wTwxItEwzcXPQcsry5nZk96gmVPKletjQ==
+  version "7.12.15"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.12.15.tgz#2b20de7f0b4b332d9b119dd9c33409c538b8aacf"
+  integrity sha512-AQBOU2Z9kWwSZMd6lNjCX0GUgFonL1wAM1db8L8PMk9UDaGsRCArBkU4Sc+UCM3AE4hjbXx+h58Lb3QT4oRmrA==
 
 "@babel/plugin-syntax-async-generators@^7.8.4":
   version "7.8.4"
@@ -961,9 +961,9 @@
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
 "@types/node@*":
-  version "14.14.24"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.24.tgz#541c00e4f7c41c8f108bd5b045248b5224c62946"
-  integrity sha512-6BAlkS4seVjszhrwN0W1WabqWwuJwcYF36Z1rPPyQm80LGRKsIeUPdzI51TezXenjetFNy1gRTpuDn1NBg33LA==
+  version "14.14.25"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.25.tgz#15967a7b577ff81383f9b888aa6705d43fbbae93"
+  integrity sha512-EPpXLOVqDvisVxtlbvzfyqSsFeQxltFbluZNRndIb8tr9KiBnYNLzrc1N3pyKUCww2RNrfHDViqDWWE1LCJQtQ==
 
 "@types/node@14.6.2":
   version "14.6.2"
@@ -1733,9 +1733,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.7.tgz#65278f03720b96694a14b038c673df7b4b37b6a6"
-  integrity sha512-gUiYLX5T78AhwA+npVlvsI1AGKZBsH0ajKCzgmE7IPoQbdXiHLUmLsbuWFk4uSZUU2JDtepFH8ULk71fPi6PnA==
+  version "3.3.11"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.11.tgz#493793200bb5b38c815d38a9c115eb9054703187"
+  integrity sha512-yis7ff0LPa1bgXBKKEU4BiS9sGCuRqCqHU6F12b2PnDurKQDMvy2meDzre15uaTf4mrxYmsezIGhiy9+GkIguw==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -3996,9 +3996,9 @@ jsii-diff@^1.20.0:
     yargs "^16.2.0"
 
 jsii-docgen@^1.8.33:
-  version "1.8.33"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.33.tgz#428662daf50fca4787567ac3d2f8f6842bb2b817"
-  integrity sha512-zEbZmJrN8eiiwnl00Vl5LPdEVHPt21wSXMO4ETQJhNLWddaRB1AYsPhT7A0Qj23gc06mNydp3DbY4bZYXypDDg==
+  version "1.8.36"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.36.tgz#24b4074b15b9d72cd7ec128d11756c8f2e9b843e"
+  integrity sha512-WnEgTGotSzgBf9ytkOVdklLD2QnYMlT4ItSWzhNBrXxcnkqKpVl8Douhxhqbv8bXxt59fZ7sYprzWS9nHW8ZTw==
   dependencies:
     "@jsii/spec" "^1.16.0"
     fs-extra "^9.0.1"
@@ -5063,10 +5063,10 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.16.1:
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.1.tgz#bae97818baab133b673f05e7cd8ead72c71bbe30"
-  integrity sha512-ZL9i9n73ctgMZPcyq01k6pn+CIrn0ZQ9mv3pJNuukAWYd9R4X/rafiRG4SsOotU4WT3O/+BDTzWiiyfi3y5Pug==
+projen@^0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.2.tgz#c25db4b4441afcba88d8ac20f29f5f43e4f8286b"
+  integrity sha512-RQ2eNTPeohogZZssZmQfpZoE1aXTz2BMDOOJ9BqL+R0i026wBL5NWh5FcHc3GfcHBm9grjkDAjn6JmA4Mqj0Pg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"
