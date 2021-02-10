@@ -20,7 +20,38 @@ Multiple spot instances are possible by simply specifying the `targetCapacity` c
 
 Enjoy your highly durable one spot instance with AWS CDK!
 
+# Constructs
+
+This library provides two major constructs:
+
+## SpotInstance
+
+- Create a spot instance **without** any fleet
+- Does **NOT** support [Spot Block](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html#fixed-duration-spot-instances)
+- Support `stop` or `hibernate` instance
+
+Scenario: To leverage the `stop` or `hibernate` capabilities of the spot instance to persist the data in the ebs volume.
+
+
+## SpotFleet
+
+- Create a spot instance with a [Spot Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet.html)
+- Support [Spot Block](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html#fixed-duration-spot-instances)
+- Does **NOT** support `stop` or `hibernate` instance
+
+Scenario: To ensure the availability with no disruption with defined period up to 6 hours.
+
 # Sample
+
+## SpotInstance
+
+```ts
+import { SpotInstance } from 'cdk-spot-one';
+
+new SpotInstance(stack, 'SpotInstance');
+```
+
+## SpotFleet
 
 ```ts
 import { SpotFleet } from 'cdk-spot-one';
