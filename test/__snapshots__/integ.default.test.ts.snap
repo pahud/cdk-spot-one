@@ -3,269 +3,97 @@
 exports[`integ snapshot validation 1`] = `
 Object {
   "Outputs": Object {
-    "InstanceId": Object {
+    "SpotInstancePublicIpAddressDF2BA302": Object {
       "Value": Object {
         "Fn::GetAtt": Array [
-          "SpotFleetSpotFleetInstancesB6507C61",
-          "InstanceId",
+          "SpotInstance35702302",
+          "PublicIp",
         ],
-      },
-    },
-    "SpotFleetId": Object {
-      "Value": Object {
-        "Ref": "SpotFleet058223FF",
       },
     },
   },
   "Parameters": Object {
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
-      "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5": Object {
-      "Description": "S3 bucket for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861": Object {
-      "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26ArtifactHash78B2F3C8": Object {
-      "Description": "Artifact hash for asset \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
-      "Type": "String",
-    },
-    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A": Object {
-      "Description": "S3 bucket for asset \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
-      "Type": "String",
-    },
-    "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9": Object {
-      "Description": "S3 key for asset version \\"b3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
-      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
-      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
-      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
     "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
       "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2",
       "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
     },
   },
   "Resources": Object {
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
+    "SpotInstance35702302": Object {
       "DependsOn": Array [
-        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
-        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+        "SpotInstanceInstanceRole8B9E9A1F",
       ],
       "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs12.x",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
             Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
+              "Fn::GetAZs": "",
             },
           ],
-          "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
+        "BlockDeviceMappings": Array [
           Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "logs:PutRetentionPolicy",
-                "logs:DeleteRetentionPolicy",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
+            "DeviceName": "/dev/xvda",
+            "Ebs": Object {
+              "VolumeSize": 60,
             },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
-        "Roles": Array [
-          Object {
-            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
           },
         ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleet058223FF": Object {
-      "Properties": Object {
-        "SpotFleetRequestConfigData": Object {
-          "IamFleetRole": Object {
+        "ImageId": Object {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
+        "InstanceType": "t3.large",
+        "LaunchTemplate": Object {
+          "LaunchTemplateId": Object {
+            "Ref": "SpotInstancelaunchTemplateForInstanceLaunchTemplate72A37BAE",
+          },
+          "Version": Object {
             "Fn::GetAtt": Array [
-              "SpotFleetFleetRoleE1EEE50B",
-              "Arn",
+              "SpotInstancelaunchTemplateForInstanceLaunchTemplate72A37BAE",
+              "LatestVersionNumber",
             ],
           },
-          "InstanceInterruptionBehavior": "terminate",
-          "LaunchTemplateConfigs": Array [
-            Object {
-              "LaunchTemplateSpecification": Object {
-                "LaunchTemplateId": Object {
-                  "Ref": "SpotFleetLaunchTemplate28F69FFD",
-                },
-                "Version": Object {
-                  "Fn::GetAtt": Array [
-                    "SpotFleetLaunchTemplate28F69FFD",
-                    "LatestVersionNumber",
-                  ],
-                },
-              },
-              "Overrides": Array [
-                Object {
-                  "SubnetId": Object {
-                    "Ref": "VpcPublicSubnet1Subnet5C2D37C4",
-                  },
-                },
-                Object {
-                  "SubnetId": Object {
-                    "Ref": "VpcPublicSubnet2Subnet691E08A3",
-                  },
-                },
-              ],
-            },
-          ],
-          "TargetCapacity": 1,
-          "TerminateInstancesWithExpiration": true,
         },
-      },
-      "Type": "AWS::EC2::SpotFleet",
-    },
-    "SpotFleetEIP19F59BBA": Object {
-      "Properties": Object {
-        "InstanceId": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetSpotFleetInstancesB6507C61",
-            "InstanceId",
-          ],
-        },
-      },
-      "Type": "AWS::EC2::EIP",
-    },
-    "SpotFleetFleetRoleE1EEE50B": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "spotfleet.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
+        "SecurityGroupIds": Array [
           Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AmazonEC2SpotFleetTaggingRole",
-              ],
+            "Fn::GetAtt": Array [
+              "SpotInstanceSpotFleetSg64BACBCF",
+              "GroupId",
             ],
           },
         ],
+        "SubnetId": Object {
+          "Ref": "VpcPublicSubnet1Subnet5C2D37C4",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "SpotOneStack/SpotInstance/SpotInstance",
+          },
+        ],
+        "UserData": Object {
+          "Fn::Base64": "#!/bin/bash
+yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+yum install -y docker
+usermod -aG docker ec2-user
+usermod -aG docker ssm-user
+service docker start",
+        },
       },
-      "Type": "AWS::IAM::Role",
+      "Type": "AWS::EC2::Instance",
     },
-    "SpotFleetInstanceProfile9F9AFBE3": Object {
+    "SpotInstanceInstanceProfile5F126FC8": Object {
       "Properties": Object {
         "Roles": Array [
           Object {
-            "Ref": "SpotFleetInstanceRole9BD9823D",
+            "Ref": "SpotInstanceInstanceRole8B9E9A1F",
           },
         ],
       },
       "Type": "AWS::IAM::InstanceProfile",
     },
-    "SpotFleetInstanceRole9BD9823D": Object {
+    "SpotInstanceInstanceRole8B9E9A1F": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -289,859 +117,18 @@ Object {
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetIsComplete24BA81A1": Object {
-      "DependsOn": Array [
-        "SpotFleetOnEventServiceRoleDefaultPolicy30BB7082",
-        "SpotFleetOnEventServiceRole7ACB5B9C",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Handler": "index.is_complete",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetOnEventServiceRole7ACB5B9C",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SpotFleetLaunchTemplate28F69FFD": Object {
-      "Properties": Object {
-        "LaunchTemplateData": Object {
-          "BlockDeviceMappings": Array [
-            Object {
-              "DeviceName": "/dev/xvda",
-              "Ebs": Object {
-                "VolumeSize": 60,
-              },
-            },
-          ],
-          "IamInstanceProfile": Object {
-            "Arn": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetInstanceProfile9F9AFBE3",
-                "Arn",
-              ],
-            },
-          },
-          "ImageId": Object {
-            "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
-          },
-          "InstanceMarketOptions": Object {
-            "MarketType": "spot",
-            "SpotOptions": Object {
-              "BlockDurationMinutes": 360,
-              "InstanceInterruptionBehavior": "terminate",
-            },
-          },
-          "InstanceType": "t3.large",
-          "SecurityGroupIds": Array [
-            Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetSpotFleetSg441E7FD6",
-                "GroupId",
-              ],
-            },
-          ],
-          "TagSpecifications": Array [
-            Object {
-              "ResourceType": "instance",
-              "Tags": Array [
-                Object {
-                  "Key": "Name",
-                  "Value": "SpotFleetStack/spotFleet/SpotFleet",
-                },
-              ],
-            },
-          ],
-          "UserData": Object {
-            "Fn::Base64": "#!/bin/bash
-yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
-yum install -y docker
-usermod -aG docker ec2-user
-usermod -aG docker ssm-user
-service docker start",
-          },
-        },
-      },
-      "Type": "AWS::EC2::LaunchTemplate",
-    },
-    "SpotFleetMyProviderframeworkisComplete495976EF": Object {
-      "DependsOn": Array [
-        "SpotFleetMyProviderframeworkisCompleteServiceRoleDefaultPolicyF56857F3",
-        "SpotFleetMyProviderframeworkisCompleteServiceRole25708828",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Description": "AWS CDK resource provider framework - isComplete (SpotFleetStack/SpotFleet/MyProvider)",
-        "Environment": Object {
-          "Variables": Object {
-            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetIsComplete24BA81A1",
-                "Arn",
-              ],
-            },
-            "USER_ON_EVENT_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetOnEvent99981121",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.isComplete",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetMyProviderframeworkisCompleteServiceRole25708828",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs10.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SpotFleetMyProviderframeworkisCompleteLogRetentionE0713D52": Object {
-      "Properties": Object {
-        "LogGroupName": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "/aws/lambda/",
-              Object {
-                "Ref": "SpotFleetMyProviderframeworkisComplete495976EF",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 1,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::LogRetention",
-    },
-    "SpotFleetMyProviderframeworkisCompleteServiceRole25708828": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
+        "Tags": Array [
           Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
+            "Key": "Name",
+            "Value": "SpotOneStack/SpotInstance/SpotInstance",
           },
         ],
       },
       "Type": "AWS::IAM::Role",
     },
-    "SpotFleetMyProviderframeworkisCompleteServiceRoleDefaultPolicyF56857F3": Object {
+    "SpotInstanceSpotFleetSg64BACBCF": Object {
       "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetOnEvent99981121",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetIsComplete24BA81A1",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetMyProviderframeworkisCompleteServiceRoleDefaultPolicyF56857F3",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetMyProviderframeworkisCompleteServiceRole25708828",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleetMyProviderframeworkonEvent1B120C8E": Object {
-      "DependsOn": Array [
-        "SpotFleetMyProviderframeworkonEventServiceRoleDefaultPolicyDC2779EA",
-        "SpotFleetMyProviderframeworkonEventServiceRole176E517D",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Description": "AWS CDK resource provider framework - onEvent (SpotFleetStack/SpotFleet/MyProvider)",
-        "Environment": Object {
-          "Variables": Object {
-            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetIsComplete24BA81A1",
-                "Arn",
-              ],
-            },
-            "USER_ON_EVENT_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetOnEvent99981121",
-                "Arn",
-              ],
-            },
-            "WAITER_STATE_MACHINE_ARN": Object {
-              "Ref": "SpotFleetMyProviderwaiterstatemachine21D451ED",
-            },
-          },
-        },
-        "Handler": "framework.onEvent",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetMyProviderframeworkonEventServiceRole176E517D",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs10.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SpotFleetMyProviderframeworkonEventLogRetentionBEE34598": Object {
-      "Properties": Object {
-        "LogGroupName": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "/aws/lambda/",
-              Object {
-                "Ref": "SpotFleetMyProviderframeworkonEvent1B120C8E",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 1,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::LogRetention",
-    },
-    "SpotFleetMyProviderframeworkonEventServiceRole176E517D": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetMyProviderframeworkonEventServiceRoleDefaultPolicyDC2779EA": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetOnEvent99981121",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetIsComplete24BA81A1",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "states:StartExecution",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Ref": "SpotFleetMyProviderwaiterstatemachine21D451ED",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetMyProviderframeworkonEventServiceRoleDefaultPolicyDC2779EA",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetMyProviderframeworkonEventServiceRole176E517D",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleetMyProviderframeworkonTimeout8491A87F": Object {
-      "DependsOn": Array [
-        "SpotFleetMyProviderframeworkonTimeoutServiceRoleDefaultPolicy3E2C382A",
-        "SpotFleetMyProviderframeworkonTimeoutServiceRole47B41C1D",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Description": "AWS CDK resource provider framework - onTimeout (SpotFleetStack/SpotFleet/MyProvider)",
-        "Environment": Object {
-          "Variables": Object {
-            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetIsComplete24BA81A1",
-                "Arn",
-              ],
-            },
-            "USER_ON_EVENT_FUNCTION_ARN": Object {
-              "Fn::GetAtt": Array [
-                "SpotFleetOnEvent99981121",
-                "Arn",
-              ],
-            },
-          },
-        },
-        "Handler": "framework.onTimeout",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetMyProviderframeworkonTimeoutServiceRole47B41C1D",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs10.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SpotFleetMyProviderframeworkonTimeoutLogRetention1D07B357": Object {
-      "Properties": Object {
-        "LogGroupName": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "/aws/lambda/",
-              Object {
-                "Ref": "SpotFleetMyProviderframeworkonTimeout8491A87F",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 1,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::LogRetention",
-    },
-    "SpotFleetMyProviderframeworkonTimeoutServiceRole47B41C1D": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetMyProviderframeworkonTimeoutServiceRoleDefaultPolicy3E2C382A": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetOnEvent99981121",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetIsComplete24BA81A1",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetMyProviderframeworkonTimeoutServiceRoleDefaultPolicy3E2C382A",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetMyProviderframeworkonTimeoutServiceRole47B41C1D",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleetMyProviderwaiterstatemachine21D451ED": Object {
-      "DependsOn": Array [
-        "SpotFleetMyProviderwaiterstatemachineRoleDefaultPolicyA819A584",
-        "SpotFleetMyProviderwaiterstatemachineRole7F8F3B22",
-      ],
-      "Properties": Object {
-        "DefinitionString": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"StartAt\\":\\"framework-isComplete-task\\",\\"States\\":{\\"framework-isComplete-task\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"IntervalSeconds\\":5,\\"MaxAttempts\\":360,\\"BackoffRate\\":1}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"framework-onTimeout-task\\"}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetMyProviderframeworkisComplete495976EF",
-                  "Arn",
-                ],
-              },
-              "\\"},\\"framework-onTimeout-task\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetMyProviderframeworkonTimeout8491A87F",
-                  "Arn",
-                ],
-              },
-              "\\"}}}",
-            ],
-          ],
-        },
-        "RoleArn": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetMyProviderwaiterstatemachineRole7F8F3B22",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::StepFunctions::StateMachine",
-    },
-    "SpotFleetMyProviderwaiterstatemachineRole7F8F3B22": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "states.",
-                      Object {
-                        "Ref": "AWS::Region",
-                      },
-                      ".amazonaws.com",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetMyProviderwaiterstatemachineRoleDefaultPolicyA819A584": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetMyProviderframeworkisComplete495976EF",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SpotFleetMyProviderframeworkonTimeout8491A87F",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetMyProviderwaiterstatemachineRoleDefaultPolicyA819A584",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetMyProviderwaiterstatemachineRole7F8F3B22",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleetOnEvent99981121": Object {
-      "DependsOn": Array [
-        "SpotFleetOnEventServiceRoleDefaultPolicy30BB7082",
-        "SpotFleetOnEventServiceRole7ACB5B9C",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3Bucket6F99AD7A",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersb3f419e6ae284703ff9758119f43be6317f953813f27312ad9d8bab345cccc26S3VersionKeyD9489FC9",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Handler": "index.on_event",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetOnEventServiceRole7ACB5B9C",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-        "Timeout": 60,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SpotFleetOnEventServiceRole7ACB5B9C": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SpotFleetOnEventServiceRoleDefaultPolicy30BB7082": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "ec2:DescribeSpotFleetInstances",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SpotFleetOnEventServiceRoleDefaultPolicy30BB7082",
-        "Roles": Array [
-          Object {
-            "Ref": "SpotFleetOnEventServiceRole7ACB5B9C",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SpotFleetSpotFleetInstancesB6507C61": Object {
-      "DeletionPolicy": "Delete",
-      "DependsOn": Array [
-        "SpotFleet058223FF",
-      ],
-      "Properties": Object {
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "SpotFleetMyProviderframeworkonEvent1B120C8E",
-            "Arn",
-          ],
-        },
-        "SpotFleetRequestId": Object {
-          "Ref": "SpotFleet058223FF",
-        },
-      },
-      "Type": "AWS::CloudFormation::CustomResource",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "SpotFleetSpotFleetSg441E7FD6": Object {
-      "Properties": Object {
-        "GroupDescription": "SpotFleetStack/SpotFleet/SpotFleetSg",
+        "GroupDescription": "SpotOneStack/SpotInstance/SpotFleetSg",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -1164,6 +151,38 @@ service docker start",
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
+    "SpotInstancelaunchTemplateForInstanceLaunchTemplate72A37BAE": Object {
+      "Properties": Object {
+        "LaunchTemplateData": Object {
+          "ImageId": Object {
+            "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+          },
+          "InstanceMarketOptions": Object {
+            "MarketType": "spot",
+            "SpotOptions": Object {
+              "InstanceInterruptionBehavior": "stop",
+              "SpotInstanceType": "persistent",
+            },
+          },
+          "InstanceType": "t3.large",
+          "TagSpecifications": Array [
+            Object {
+              "ResourceType": "instance",
+              "Tags": Array [
+                Object {
+                  "Key": "Name",
+                  "Value": "SpotOneStack/launchTemplateForInstance",
+                },
+              ],
+            },
+          ],
+          "UserData": Object {
+            "Fn::Base64": "#!/bin/bash",
+          },
+        },
+      },
+      "Type": "AWS::EC2::LaunchTemplate",
+    },
     "Vpc8378EB38": Object {
       "Properties": Object {
         "CidrBlock": "10.0.0.0/16",
@@ -1173,7 +192,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc",
+            "Value": "SpotOneStack/Vpc",
           },
         ],
       },
@@ -1184,7 +203,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc",
+            "Value": "SpotOneStack/Vpc",
           },
         ],
       },
@@ -1218,7 +237,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet1",
+            "Value": "SpotOneStack/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1250,7 +269,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet1",
+            "Value": "SpotOneStack/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1276,7 +295,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet2",
+            "Value": "SpotOneStack/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -1319,7 +338,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PrivateSubnet2",
+            "Value": "SpotOneStack/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -1349,7 +368,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotOneStack/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -1369,7 +388,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotOneStack/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -1380,7 +399,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotOneStack/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1423,7 +442,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet1",
+            "Value": "SpotOneStack/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1452,7 +471,7 @@ service docker start",
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet2",
+            "Value": "SpotOneStack/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -1495,7 +514,7 @@ service docker start",
           },
           Object {
             "Key": "Name",
-            "Value": "SpotFleetStack/Vpc/PublicSubnet2",
+            "Value": "SpotOneStack/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {

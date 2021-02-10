@@ -5,7 +5,7 @@ import { SpotFleet, InstanceInterruptionBehavior } from '../src';
 import '@aws-cdk/assert/jest';
 import { BlockDuration } from '../src/spot';
 
-describe('Spot Fleet tests', () => {
+describe('SpotFleet', () => {
   let mockApp: App;
   let stack: Stack;
 
@@ -14,7 +14,30 @@ describe('Spot Fleet tests', () => {
     stack = new Stack(mockApp, 'testing-stack');
   });
 
-  test('create the HTTP API', () => {
+  test('default cluster provision single ec2 instance', () => {
+    new SpotFleet(stack, 'SpotFleet');
+    expect(stack).toHaveResourceLike('AWS::EC2::SpotFleet', {
+      SpotFleetRequestConfigData: {
+        TargetCapacity: 1,
+      },
+    });
+  });
+
+  test('fleet with custom AMI ID comes with default linux userdata', () => {
+    new SpotFleet(stack, 'SpotFleet', {
+      customAmiId: 'ami-xxxxxx',
+    });
+    expect(stack).toHaveResourceLike('AWS::EC2::LaunchTemplate', {
+      LaunchTemplateData: {
+        UserData: {
+          'Fn::Base64': '#!/bin/bash',
+        },
+      },
+    });
+  });
+
+
+  test('create the SpotFleet', () => {
     const fleet = new SpotFleet(stack, 'SpotFleet', {
       targetCapacity: 1,
       blockDuration: BlockDuration.SIX_HOURS,
@@ -84,24 +107,18 @@ describe('Spot Fleet tests', () => {
     });
   });
 
-  test('feet with custom instance role', () => {
+  test('fleet with custom instance role', () => {
     const anotherStack = new Stack(mockApp, 'another-stack');
 
-    new SpotFleet(stack, 'SpotFleet', {
+    new SpotFleet(anotherStack, 'SpotFleet', {
       instanceRole: new iam.Role(anotherStack, 'Custom Role', {
         assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
+        roleName: 'CustomRole',
       }),
     });
 
-    expect(stack).not.toHaveResourceLike('AWS::IAM::Role', {
-      ManagedPolicyArns: [
-        'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
-      ],
-    });
     expect(anotherStack).toHaveResourceLike('AWS::IAM::Role', {
-      ManagedPolicyArns: [
-        'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
-      ],
+      RoleName: 'CustomRole',
     });
   });
 
