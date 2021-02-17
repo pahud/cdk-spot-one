@@ -49,7 +49,7 @@
     "jsii-docgen": "^1.8.33",
     "jsii-pacmak": "^1.20.0",
     "json-schema": "^0.3.0",
-    "projen": "^0.16.3",
+    "projen": "^0.16.5",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.5.0",
     "typescript": "^3.9.5"
@@ -79,7 +79,7 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.6.146",
+  "version": "0.6.153",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",

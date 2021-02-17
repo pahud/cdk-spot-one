@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.153](https://github.com/pahud/cdk-spot-one/compare/v0.6.152...v0.6.153) (2021-02-16)
+
+### [0.6.152](https://github.com/pahud/cdk-spot-one/compare/v0.6.151...v0.6.152) (2021-02-15)
+
+### [0.6.151](https://github.com/pahud/cdk-spot-one/compare/v0.6.150...v0.6.151) (2021-02-14)
+
+### [0.6.150](https://github.com/pahud/cdk-spot-one/compare/v0.6.149...v0.6.150) (2021-02-13)
+
+### [0.6.149](https://github.com/pahud/cdk-spot-one/compare/v0.6.148...v0.6.149) (2021-02-12)
+
+### [0.6.148](https://github.com/pahud/cdk-spot-one/compare/v0.6.147...v0.6.148) (2021-02-11)
+
+### [0.6.147](https://github.com/pahud/cdk-spot-one/compare/v0.6.146...v0.6.147) (2021-02-10)
+
+
+### Features
+
+* support SpotInstance ([#199](https://github.com/pahud/cdk-spot-one/issues/199)) ([0c31dfb](https://github.com/pahud/cdk-spot-one/commit/0c31dfbfe99229b3bb782cc8f6d115133fa12f15)), closes [#193](https://github.com/pahud/cdk-spot-one/issues/193)
+
 ### [0.6.146](https://github.com/pahud/cdk-spot-one/compare/v0.6.145...v0.6.146) (2021-02-10)
 
 ### [0.6.145](https://github.com/pahud/cdk-spot-one/compare/v0.6.144...v0.6.145) (2021-02-09)
