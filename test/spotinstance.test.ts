@@ -22,7 +22,7 @@ describe('SpotInstance', () => {
           MarketType: 'spot',
           SpotOptions: {
             InstanceInterruptionBehavior: 'terminate',
-            SpotInstanceType: 'persistent',
+            SpotInstanceType: 'one-time',
           },
         },
         InstanceType: 't3.large',

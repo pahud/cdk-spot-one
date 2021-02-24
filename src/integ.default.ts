@@ -26,7 +26,7 @@ export class IntegTesting {
 
     new SpotInstance(stack, 'SpotInstance', {
       vpc,
-      instanceInterruptionBehavior: InstanceInterruptionBehavior.STOP,
+      // instanceInterruptionBehavior: InstanceInterruptionBehavior.STOP,
       eipAllocationId: eipAllocationId,
       assignEip: false,
       defaultInstanceType: new InstanceType(instanceType),

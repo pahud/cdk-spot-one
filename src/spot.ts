@@ -300,8 +300,9 @@ export class SpotInstance extends SpotOne {
       instanceMarketOptions: {
         marketType: 'spot',
         spotOptions: {
-          instanceInterruptionBehavior: props.instanceInterruptionBehavior ?? InstanceInterruptionBehavior.TERMINATE,
-          spotInstanceType: 'persistent',
+          instanceInterruptionBehavior: props.instanceInterruptionBehavior,
+          spotInstanceType: props.instanceInterruptionBehavior === InstanceInterruptionBehavior.TERMINATE ? 'one-time'
+            : 'persistent',
         },
       },
       iamInstanceProfile: this.instanceProfile,
