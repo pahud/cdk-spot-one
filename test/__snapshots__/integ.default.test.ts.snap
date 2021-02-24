@@ -160,7 +160,6 @@ service docker start",
           "InstanceMarketOptions": Object {
             "MarketType": "spot",
             "SpotOptions": Object {
-              "InstanceInterruptionBehavior": "stop",
               "SpotInstanceType": "persistent",
             },
           },

@@ -1,6 +1,5 @@
 import { InstanceType } from '@aws-cdk/aws-ec2';
 import * as cdk from '@aws-cdk/core';
-import { InstanceInterruptionBehavior } from './index';
 import { VpcProvider, SpotInstance } from './spot';
 
 export class IntegTesting {
