@@ -1,7 +1,6 @@
 const { AwsCdkConstructLibrary } = require('projen');
 const { Automation } = require('projen-automate-it');
 
-
 const PROJECT_NAME = 'cdk-spot-one';
 const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';

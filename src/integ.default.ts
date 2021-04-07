@@ -32,31 +32,6 @@ export class IntegTesting {
       keyName,
       ebsVolumeSize: volumeSize,
     });
-
-    // const fleet = new SpotFleet(stack, 'SpotFleet', {
-    //   vpc,
-    //   instanceOnly: true,
-    //   instanceInterruptionBehavior: InstanceInterruptionBehavior.STOP,
-    //   blockDuration: BlockDuration.SIX_HOURS,
-    //   eipAllocationId: eipAllocationId,
-    //   assignEip: false,
-    //   defaultInstanceType: new InstanceType(instanceType),
-    //   keyName,
-    //   blockDeviceMappings: [
-    //     {
-    //       deviceName: '/dev/xvda',
-    //       ebs: {
-    //         volumeSize,
-    //       },
-    //     },
-    //   ],
-    // });
-
-    // const expireAfter = stack.node.tryGetContext('expire_after');
-    // if (expireAfter) {
-    //   fleet.expireAfter(cdk.Duration.hours(expireAfter));
-    // }
-
     this.stack = [stack];
   }
 }

@@ -970,7 +970,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^26.0.20":
+"@types/jest@^26.0.22":
   version "26.0.22"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.22.tgz#8308a1debdf1b807aa47be2838acdcd91e88fbe6"
   integrity sha512-eeWwWjlqxvBxc4oQdkueW5OF/gtfSceKk4OnOAGlUSwS/liBRtZppbJuz1YkgbrbfGOoeBHun9fOvXnjNwrSOw==
@@ -1035,7 +1035,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^4.15.2":
+"@typescript-eslint/eslint-plugin@^4.21.0":
   version "4.21.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.21.0.tgz#3fce2bfa76d95c00ac4f33dff369cb593aab8878"
   integrity sha512-FPUyCPKZbVGexmbCFI3EQHzCZdy2/5f+jv6k2EDljGdXSRc0cKvbndd2nHZkSLqCNOPk0jB6lGzwIkglXcYVsQ==
@@ -1061,7 +1061,7 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.15.2":
+"@typescript-eslint/parser@^4.21.0":
   version "4.21.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.21.0.tgz#a227fc2af4001668c3e3f7415d4feee5093894c1"
   integrity sha512-eyNf7QmE5O/l1smaQgN0Lj2M/1jOuNg2NrBm1dqqQN0sVngTLyw8tdCbih96ixlhbF1oINoN8fDCyEH9SjLeIA==
@@ -2437,7 +2437,7 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
-eslint@^7.20.0:
+eslint@^7.23.0:
   version "7.23.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.23.0.tgz#8d029d252f6e8cf45894b4bee08f5493f8e94325"
   integrity sha512-kqvNVbdkjzpFy0XOszNwjkKzZ+6TcwCQ/h+ozlcIWwaimBBuhlQ4nN6kbiM2L+OjDcznkTJxzYfRFH92sx4a0Q==
@@ -4023,7 +4023,7 @@ jsesc@^2.5.1:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsii-diff@^1.22.0:
+jsii-diff@^1.27.0:
   version "1.27.0"
   resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.27.0.tgz#48da3594e784a6badb26e01ae3be017883653465"
   integrity sha512-CBg3ZwT63iPLdfy8nNY++tc8xuBm+Zs1dDjnK2/0z3yApOAmYIfi/5BplPOoSfzCNAejtvIxLEgScl9BZktXXA==
@@ -4035,7 +4035,7 @@ jsii-diff@^1.22.0:
     typescript "~3.9.9"
     yargs "^16.2.0"
 
-jsii-docgen@^1.8.51:
+jsii-docgen@^1.8.67:
   version "1.8.67"
   resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.67.tgz#ab2c9c9bc13573b9eb0ceb4899fca97bc7c87290"
   integrity sha512-9v3HTGqjOYzmRDlVZsIJW6/bs7PMu9kmaIWUz5kOLGTTu8IRkE6aPkQYet4BMl+3NOJkVkrv92GPN9/knWWX7g==
@@ -4045,7 +4045,7 @@ jsii-docgen@^1.8.51:
     jsii-reflect "^1.16.0"
     yargs "^16.2.0"
 
-jsii-pacmak@^1.22.0:
+jsii-pacmak@^1.27.0:
   version "1.27.0"
   resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.27.0.tgz#d6d28f5e9208d7ca338edfeba95ba25d8f552bde"
   integrity sha512-K19kyUvFKpg6l5VaTkwFz4pgnrOR/vH69iqE6YWSJVY1i3S7dTA2mhG+dVbeB96MMnx7IUno0iKT3br/aWCtew==
@@ -4086,7 +4086,7 @@ jsii-rosetta@^1.27.0:
     xmldom "^0.5.0"
     yargs "^16.2.0"
 
-jsii@^1.22.0:
+jsii@^1.27.0:
   version "1.27.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.27.0.tgz#7dc6716ad5c68d6a0c0ff913ff656cf2bbe56ec7"
   integrity sha512-EP1NIeheeUw4WpGESkOK7Kb/bT9bBlOunlQuQb+KSMKYq+Zh8uWuFxzTYbt3pg/UdaVis5YD0jsdVgQFVU7ufA==
@@ -5065,30 +5065,14 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen-automate-it@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/projen-automate-it/-/projen-automate-it-0.0.4.tgz#b28c114a36eb363b9f6415cd9e2745268413aa20"
-  integrity sha512-0Mu2a9Mn1jkgH7+ZRKAikvI8tlkoXmG6OWacV7N9l3PPQk17UFjUOgjBTz1vFyPzPrQynulTiQOeK5XgOMMSLg==
+projen-automate-it@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/projen-automate-it/-/projen-automate-it-0.0.8.tgz#58141e9471fc96d4f403e50653c312b8e6bafd7a"
+  integrity sha512-EBq4+Xuc9zj9XwlGcUhGjAg8ULo8x2W+ypJ49cdBatM0f5/8/Uu9RkfoJtj8SOv2dsYptJKoMsBBSFhjqR1j7A==
   dependencies:
-    projen "^0.16.12"
+    projen "^0.17"
 
-projen@^0.16.12:
-  version "0.16.42"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.42.tgz#821f2087f841a5b63aa2e25c724c16b3ae0c6c3a"
-  integrity sha512-mOc4wz8jrmnu3eP7CzCmPO1LU39dec/cCZwDBaif+j72/daKg49uoXtVkMh0wyMMwydSqeYp9om2cnYsbVaJVA==
-  dependencies:
-    "@iarna/toml" "^2.2.5"
-    chalk "^4.1.0"
-    decamelize "^4.0.0"
-    fs-extra "^9.0.1"
-    glob "^7"
-    inquirer "^7.3.3"
-    semver "^7.3.2"
-    xmlbuilder2 "^2.4.0"
-    yaml "^1.10.0"
-    yargs "^16.2.0"
-
-projen@^0.17.27:
+projen@^0.17, projen@^0.17.27:
   version "0.17.27"
   resolved "https://registry.yarnpkg.com/projen/-/projen-0.17.27.tgz#166aa7f6a5dab47fc65b3bf23e0d52646bfca5bb"
   integrity sha512-O0xYEnn22UxMl4Bap5u87p30TGUQh4D0jw/cbOk+B0pnf8Y9k4AvWPonSQCFGxTbDMLXw1YBNIuT9orz1BNIEQ==
@@ -6108,7 +6092,7 @@ trim-off-newlines@^1.0.0:
   resolved "https://registry.yarnpkg.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
   integrity sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
 
-ts-jest@^26.5.2:
+ts-jest@^26.5.4:
   version "26.5.4"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.4.tgz#207f4c114812a9c6d5746dd4d1cdf899eafc9686"
   integrity sha512-I5Qsddo+VTm94SukBJ4cPimOoFZsYTeElR2xy6H2TOVs+NsvgYglW8KuQgKoApOKuaU/Ix/vrF9ebFZlb5D2Pg==
@@ -6214,7 +6198,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.2.2:
+typescript@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
   integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
