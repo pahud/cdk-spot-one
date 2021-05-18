@@ -573,7 +573,7 @@ export class LaunchTemplateResource extends Construct {
 }
 
 const GRAVITON_INSTANCETYPES = ['a1'];
-const GRAVITON2_INSTANCETYPES = ['c6g', 'm6g', 'r6g'];
+const GRAVITON2_INSTANCETYPES = ['c6g', 'm6g', 'r6g', 'x2gd'];
 const GPU_INSTANCETYPES = ['p2', 'p3', 'g4'];
 const INFERENTIA_INSTANCETYPES = ['inf1'];
 
