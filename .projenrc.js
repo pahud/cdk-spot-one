@@ -1,9 +1,7 @@
 const { AwsCdkConstructLibrary } = require('projen');
-const { Automation } = require('projen-automate-it');
 
 const PROJECT_NAME = 'cdk-spot-one';
 const PROJECT_DESCRIPTION = 'One spot instance with EIP and defined duration. No interruption.';
-const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkConstructLibrary({
   authorName: 'Pahud Hsieh',
@@ -27,19 +25,11 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/core',
     '@aws-cdk/custom-resources',
   ],
-  deps: ['projen-automate-it'],
-  bundledDeps: ['projen-automate-it'],
   python: {
     distName: 'cdk-spot-one',
     module: 'cdk_spot_one',
   },
 });
-const automation = new Automation(project, {
-  automationToken: AUTOMATION_TOKEN,
-});
-automation.autoApprove();
-automation.autoMerge();
-automation.projenYarnUpgrade();
 
 const common_exclude = ['cdk.out', 'cdk.context.json', 'images', 'yarn-error.log'];
 project.npmignore.exclude(...common_exclude);
