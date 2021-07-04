@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as ec2 from '@aws-cdk/aws-ec2';
+import { IMachineImage } from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as logs from '@aws-cdk/aws-logs';
@@ -120,7 +121,7 @@ export interface SpotOneProps {
    *
    * @default - The latest Amaozn Linux 2 AMI ID
    */
-  readonly customAmiId?: string;
+  readonly customAmiId?: IMachineImage;
 
   /**
    * VPC subnet for the spot fleet
@@ -188,7 +189,7 @@ export abstract class SpotOne extends Construct {
   readonly instanceId?: string;
   readonly instanceType?: string;
   readonly defaultInstanceType: ec2.InstanceType;
-  readonly imageId: string;
+  readonly imageId: IMachineImage;
   readonly userData: ec2.UserData;
   protected instanceRole?: iam.IRole;
   protected instanceProfile?: iam.CfnInstanceProfile;
@@ -205,7 +206,7 @@ export abstract class SpotOne extends Construct {
       ec2.MachineImage.latestAmazonLinux({
         generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
         cpuType: nodeTypeForInstanceType(this.defaultInstanceType) === NodeType.ARM ? ec2.AmazonLinuxCpuType.ARM_64 : undefined,
-      }).getImage(this).imageId;
+      });
 
     this.userData = ec2.UserData.forLinux();
 
@@ -276,10 +277,7 @@ export class SpotInstance extends SpotOne {
     const spotInstance = new ec2.Instance(this, 'SpotInstance', {
       vpc: this.vpc,
       instanceType: this.defaultInstanceType,
-      machineImage: ec2.MachineImage.latestAmazonLinux({
-        generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
-        cpuType: nodeTypeForInstanceType(this.defaultInstanceType) === NodeType.ARM ? ec2.AmazonLinuxCpuType.ARM_64 : undefined,
-      }),
+      machineImage: this.imageId,
       keyName: props.keyName,
       securityGroup: this.defaultSecurityGroup,
       role: this.instanceRole,
@@ -514,7 +512,7 @@ export class SpotFleet extends SpotOne {
 }
 
 export interface LaunchTemplateProps {
-  readonly imageId?: string;
+  readonly imageId?: IMachineImage;
   readonly defaultInstanceType?: ec2.InstanceType;
   readonly keyName?: string;
   readonly userData?: ec2.UserData;
@@ -546,7 +544,7 @@ export class LaunchTemplateResource extends Construct {
 
     this.resource = new ec2.CfnLaunchTemplate(this, 'LaunchTemplate', {
       launchTemplateData: {
-        imageId,
+        imageId: imageId.toString(),
         instanceType: this.defaultInstanceType.toString(),
         userData: Fn.base64(userData.render()),
         keyName: props.keyName,

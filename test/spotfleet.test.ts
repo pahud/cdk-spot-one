@@ -25,7 +25,7 @@ describe('SpotFleet', () => {
 
   test('fleet with custom AMI ID comes with default linux userdata', () => {
     new SpotFleet(stack, 'SpotFleet', {
-      customAmiId: 'ami-xxxxxx',
+      customAmiId: ec2.MachineImage.lookup({ name: 'ubuntu/images/hvm-ssd/ubuntu-focal-20.04-arm64-server-20210429' }),
     });
     expect(stack).toHaveResourceLike('AWS::EC2::LaunchTemplate', {
       LaunchTemplateData: {
