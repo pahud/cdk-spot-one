@@ -32,6 +32,15 @@ export class IntegTesting {
       keyName,
       ebsVolumeSize: volumeSize,
     });
+
+    new SpotInstance(stack, 'SpotInstanceUbuntu', {
+      vpc,
+      customAmiId: 'ami-076d8ebdd0e1ec091', //ubuntu ami id.
+      defaultInstanceType: new InstanceType('t4g.medium'),
+      keyName,
+      blockDeviceMappings: [{ deviceName: '/dev/sda1', ebs: { volumeSize: 20 } }],
+      additionalUserData: ['curl -fsSL https://get.docker.com -o get-docker.sh', 'sudo sh get-docker.sh'],
+    });
     this.stack = [stack];
   }
 }

@@ -11,6 +11,14 @@ Object {
         ],
       },
     },
+    "SpotInstanceUbuntuPublicIpAddressC9A9C65F": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "SpotInstanceUbuntuSpotInstance678B09F5",
+          "PublicIp",
+        ],
+      },
+    },
   },
   "Parameters": Object {
     "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
@@ -31,17 +39,6 @@ Object {
               "Fn::GetAZs": "",
             },
           ],
-        },
-        "BlockDeviceMappings": Array [
-          Object {
-            "DeviceName": "/dev/xvda",
-            "Ebs": Object {
-              "VolumeSize": 60,
-            },
-          },
-        ],
-        "ImageId": Object {
-          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
         },
         "InstanceType": "t3.large",
         "LaunchTemplate": Object {
@@ -72,14 +69,6 @@ Object {
             "Value": "SpotOneStack/SpotInstance/SpotInstance",
           },
         ],
-        "UserData": Object {
-          "Fn::Base64": "#!/bin/bash
-yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
-yum install -y docker
-usermod -aG docker ec2-user
-usermod -aG docker ssm-user
-service docker start",
-        },
       },
       "Type": "AWS::EC2::Instance",
     },
@@ -117,6 +106,9 @@ service docker start",
           ],
           "Version": "2012-10-17",
         },
+        "ManagedPolicyArns": Array [
+          "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+        ],
         "Tags": Array [
           Object {
             "Key": "Name",
@@ -151,15 +143,199 @@ service docker start",
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
+    "SpotInstanceUbuntuEIP5C3A0AAC": Object {
+      "Type": "AWS::EC2::EIP",
+    },
+    "SpotInstanceUbuntuSpotFleetSg2A0A4FFC": Object {
+      "Properties": Object {
+        "GroupDescription": "SpotOneStack/SpotInstanceUbuntu/SpotFleetSg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:22",
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "ToPort": 22,
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Vpc8378EB38",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "SpotInstanceUbuntuSpotInstance678B09F5": Object {
+      "DependsOn": Array [
+        "SpotInstanceUbuntuSpotInstanceInstanceRoleBBD38753",
+      ],
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "InstanceType": "t4g.medium",
+        "LaunchTemplate": Object {
+          "LaunchTemplateId": Object {
+            "Ref": "SpotInstanceUbuntulaunchTemplateForInstanceLaunchTemplateB7D6D4E3",
+          },
+          "Version": Object {
+            "Fn::GetAtt": Array [
+              "SpotInstanceUbuntulaunchTemplateForInstanceLaunchTemplateB7D6D4E3",
+              "LatestVersionNumber",
+            ],
+          },
+        },
+        "SecurityGroupIds": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "SpotInstanceUbuntuSpotFleetSg2A0A4FFC",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": Object {
+          "Ref": "VpcPublicSubnet1Subnet5C2D37C4",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "SpotOneStack/SpotInstanceUbuntu/SpotInstance",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "SpotInstanceUbuntuSpotInstanceInstanceProfileF049B459": Object {
+      "Properties": Object {
+        "Roles": Array [
+          Object {
+            "Ref": "SpotInstanceUbuntuSpotInstanceInstanceRoleBBD38753",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "SpotInstanceUbuntuSpotInstanceInstanceRoleBBD38753": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "ec2.",
+                      Object {
+                        "Ref": "AWS::URLSuffix",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "SpotOneStack/SpotInstanceUbuntu/SpotInstance",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "SpotInstanceUbuntulaunchTemplateForInstanceLaunchTemplateB7D6D4E3": Object {
+      "Properties": Object {
+        "LaunchTemplateData": Object {
+          "BlockDeviceMappings": Array [
+            Object {
+              "DeviceName": "/dev/sda1",
+              "Ebs": Object {
+                "VolumeSize": 20,
+              },
+            },
+          ],
+          "IamInstanceProfile": Object {
+            "Arn": Object {
+              "Fn::GetAtt": Array [
+                "SpotInstanceUbuntuSpotInstanceInstanceProfileF049B459",
+                "Arn",
+              ],
+            },
+          },
+          "ImageId": "ami-076d8ebdd0e1ec091",
+          "InstanceMarketOptions": Object {
+            "MarketType": "spot",
+            "SpotOptions": Object {
+              "InstanceInterruptionBehavior": "stop",
+              "SpotInstanceType": "persistent",
+            },
+          },
+          "InstanceType": "t4g.medium",
+          "TagSpecifications": Array [
+            Object {
+              "ResourceType": "instance",
+              "Tags": Array [
+                Object {
+                  "Key": "Name",
+                  "Value": "SpotOneStack/launchTemplateForInstance",
+                },
+              ],
+            },
+          ],
+          "UserData": Object {
+            "Fn::Base64": "#!/bin/bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh",
+          },
+        },
+      },
+      "Type": "AWS::EC2::LaunchTemplate",
+    },
     "SpotInstancelaunchTemplateForInstanceLaunchTemplate72A37BAE": Object {
       "Properties": Object {
         "LaunchTemplateData": Object {
+          "BlockDeviceMappings": Array [
+            Object {
+              "DeviceName": "/dev/xvda",
+              "Ebs": Object {
+                "VolumeSize": 60,
+              },
+            },
+          ],
+          "IamInstanceProfile": Object {
+            "Arn": Object {
+              "Fn::GetAtt": Array [
+                "SpotInstanceInstanceProfile5F126FC8",
+                "Arn",
+              ],
+            },
+          },
           "ImageId": Object {
             "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
           },
           "InstanceMarketOptions": Object {
             "MarketType": "spot",
             "SpotOptions": Object {
+              "InstanceInterruptionBehavior": "stop",
               "SpotInstanceType": "persistent",
             },
           },
@@ -176,7 +352,12 @@ service docker start",
             },
           ],
           "UserData": Object {
-            "Fn::Base64": "#!/bin/bash",
+            "Fn::Base64": "#!/bin/bash
+yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+yum install -y docker
+usermod -aG docker ec2-user
+usermod -aG docker ssm-user
+service docker start",
           },
         },
       },
