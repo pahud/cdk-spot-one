@@ -223,6 +223,7 @@ new SpotInstance(scope: Construct, id: string, props?: SpotInstanceProps)
   * **targetCapacity** (<code>number</code>)  number of the target capacity. __*Default*__: 1
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  VPC for the spot fleet. __*Default*__: new VPC will be created
   * **vpcSubnet** (<code>[SubnetSelection](#aws-cdk-aws-ec2-subnetselection)</code>)  VPC subnet for the spot fleet. __*Default*__: public subnet
+  * **blockDeviceMappings** (<code>Array<[CfnLaunchTemplate.BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code>)  blockDeviceMappings for config instance. __*Default*__: from ami config.
 
 
 
@@ -536,6 +537,7 @@ Name | Type | Description
 -----|------|-------------
 **additionalUserData**? | <code>Array<string></code> | Additional commands for user data.<br/>__*Default*__: no additional user data
 **assignEip**? | <code>boolean</code> | Auto assign a new EIP on this instance if `eipAllocationId` is not defined.<br/>__*Default*__: true
+**blockDeviceMappings**? | <code>Array<[CfnLaunchTemplate.BlockDeviceMappingProperty](#aws-cdk-aws-ec2-cfnlaunchtemplate-blockdevicemappingproperty)></code> | blockDeviceMappings for config instance.<br/>__*Default*__: from ami config.
 **customAmiId**? | <code>string</code> | custom AMI ID.<br/>__*Default*__: The latest Amaozn Linux 2 AMI ID
 **defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | default EC2 instance type.<br/>__*Default*__: t3.large
 **ebsVolumeSize**? | <code>number</code> | default EBS volume size for the spot instance.<br/>__*Default*__: 60;

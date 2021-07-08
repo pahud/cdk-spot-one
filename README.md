@@ -48,7 +48,19 @@ Scenario: To ensure the availability with no disruption with defined period up t
 ```ts
 import { SpotInstance } from 'cdk-spot-one';
 
+// Default use Amazon Linux 2
 new SpotInstance(stack, 'SpotInstance');
+
+
+// Custom Id use Ubuntu 20.04 Arm64 Server.
+new SpotInstance(stack, 'SpotInstanceUbuntu', {
+      vpc,
+      customAmiId: 'ami-076d8ebdd0e1ec091', //ubuntu ami id.
+      defaultInstanceType: new InstanceType('t4g.medium'),
+      keyName,
+      blockDeviceMappings: [{ deviceName: '/dev/sda1', ebs: { volumeSize: 20 } }],
+      additionalUserData: ['curl -fsSL https://get.docker.com -o get-docker.sh', 'sudo sh get-docker.sh'],
+    });
 ```
 
 ## SpotFleet

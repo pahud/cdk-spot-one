@@ -265,7 +265,14 @@ export abstract class SpotOne extends Construct {
 }
 
 
-export interface SpotInstanceProps extends SpotOneProps {}
+export interface SpotInstanceProps extends SpotOneProps {
+  /**
+   * blockDeviceMappings for config instance.
+   *
+   * @default - from ami config.
+   */
+  readonly blockDeviceMappings?: ec2.CfnLaunchTemplate.BlockDeviceMappingProperty[];
+}
 
 export class SpotInstance extends SpotOne {
   readonly instanceId?: string;
@@ -282,38 +289,44 @@ export class SpotInstance extends SpotOne {
       }),
       keyName: props.keyName,
       securityGroup: this.defaultSecurityGroup,
-      role: this.instanceRole,
-      userData: this.userData,
       vpcSubnets: props.vpcSubnet ?? {
         subnetType: ec2.SubnetType.PUBLIC,
       },
-      blockDevices: [
-        {
-          deviceName: '/dev/xvda',
-          volume: ec2.BlockDeviceVolume.ebs(props.ebsVolumeSize ?? 60),
-        },
-      ],
+    });
+    spotInstance.role.addManagedPolicy({
+      managedPolicyArn: 'arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore',
     });
     const cfnInstance = spotInstance.node.defaultChild as ec2.CfnInstance;
     // create custom launch template reousrce
     const launchTemplate = new LaunchTemplateResource(this, 'launchTemplateForInstance', {
+      imageId: props.customAmiId ?? ec2.MachineImage.latestAmazonLinux({
+        generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+        cpuType: nodeTypeForInstanceType(this.defaultInstanceType) === NodeType.ARM ? ec2.AmazonLinuxCpuType.ARM_64 : undefined,
+      }).getImage(this).imageId,
+      defaultInstanceType: this.defaultInstanceType,
       instanceMarketOptions: {
         marketType: 'spot',
         spotOptions: {
-          instanceInterruptionBehavior: props.instanceInterruptionBehavior,
+          instanceInterruptionBehavior: InstanceInterruptionBehavior.STOP,
           spotInstanceType: props.instanceInterruptionBehavior === InstanceInterruptionBehavior.TERMINATE ? 'one-time'
             : 'persistent',
         },
       },
-      iamInstanceProfile: this.instanceProfile,
+      iamInstanceProfile: this.instanceProfile ?? spotInstance.node.tryFindChild('InstanceProfile') as iam.CfnInstanceProfile,
+      blockDeviceMappings: props.blockDeviceMappings ?? [{ deviceName: '/dev/xvda', ebs: { volumeSize: props.ebsVolumeSize ?? 10 } }],
+      userData: this.userData,
     });
     cfnInstance.addPropertyOverride('LaunchTemplate', {
       LaunchTemplateId: launchTemplate.resource.ref,
       Version: launchTemplate.resource.attrLatestVersionNumber,
     });
-    // As we can't specify IamInstanceProfile both in launch template and instane property
+
+    // As we can't specify IamInstanceProfile, UserData, ImageId, InstaneType both in launch template and instane property
     // we need delete the property here.
     cfnInstance.addPropertyDeletionOverride('IamInstanceProfile');
+    cfnInstance.addPropertyDeletionOverride('UserData');
+    cfnInstance.addPropertyDeletionOverride('ImageId');
+    cfnInstance.addPropertyDeletionOverride('InstaneType');
 
     this.instanceId = spotInstance.instanceId;
     this.instanceType = this.defaultInstanceType.toString();
