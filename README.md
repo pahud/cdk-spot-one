@@ -110,6 +110,10 @@ NOTE: This kind of spot instance will be interrupted by AWS. However the fleet i
 defaultInstanceType: new InstanceType('c6g.large')
 ```
 
+# ECS Cluster support
+
+See https://github.com/pahud/cdk-spot-one/issues/270#issuecomment-877152685
+
 # SSH connect
 
 By default the `cdk-spot-one` does not bind any SSH public key for you on the instance. You are encouraged to use `ec2-instance-connect` to send your public key from local followed by one-time SSH connect.
